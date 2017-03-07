@@ -5,7 +5,9 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "^3.0.2"
+    "react-router": "^3.0.2",
+    "react-toolbox": "^2.0.0-beta.6",
+    "react-toolbox-themr": "^1.0.2"
   },
   "devDependencies": {
     "react-scripts": "0.9.4"
@@ -14,6 +16,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "toolbox": "react-toolbox-themr",
     "eject": "react-scripts eject"
+  },
+  "reactToolbox": {
+    "output": "assets/react-toolbox"
   }
 }

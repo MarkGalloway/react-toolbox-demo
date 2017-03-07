@@ -6,7 +6,7 @@ import routes from './routes';
 
 import './index.css';
 
-ReactDOM.render(
-  <Router routes={routes} history={browserHistory}/>,
-  document.getElementById('root')
+ReactDOM.render((
+    <Router routes={routes} history={browserHistory}/>
+  ), document.getElementById('root')
 );
