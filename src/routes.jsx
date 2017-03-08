@@ -1,15 +1,35 @@
 
 import React from 'react';
-import { Route, IndexRoute } from 'react-router';
-import App from './components/App';
+import { Route, IndexRoute, IndexRedirect } from 'react-router';
+
 import EmptyPage from './components/EmptyPage';
+import App from './components/App';
+import Appraisals from './components/Appraisals';
+import Desking from './components/Desking';
 import Test from './components/Test';
 
 export default (
-  <Route path="/" component={App} title='Appraisals'>
-    <IndexRoute component={EmptyPage}/>
-    <Route path="test" component={Test}/>
+  <Route path="/" component={App}>
+    <IndexRedirect to="/appraisals" />
+    <Route path="appraisals" component={Appraisals}>
+      <IndexRoute component={Test}/>
+    </Route>
+    { /* <Route path="create" component={CreateAppraisal}/> */ }
     { /* <Route path="list" component={ListAppraisals}/> */ }
-    { /* <Route path="create" component={CreateAppraisals}/> */ }
+    { /* <Route path="appraisals/:appraisalId" component={ViewAppraisal}/> */ }
+    { /* <Route path="appraisals/:appraisalId/edit" component={EditAppraisal}/> */ }
+    <Route path="tasks" component={Desking}>
+      <IndexRoute component={EmptyPage}/>
+    </Route>
+    <Route path="appointments" component={Desking}>
+      <IndexRoute component={EmptyPage}/>
+    </Route>
+    <Route path="settings" component={Desking}>
+      <IndexRoute component={EmptyPage}/>
+    </Route>
+    <Route path="logout" component={Desking}>
+      <IndexRoute component={EmptyPage}/>
+    </Route>
+    <Route path="test" component={Test}/>
   </Route>
 );

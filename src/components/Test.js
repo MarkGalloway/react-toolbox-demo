@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from 'react-toolbox/lib/button/Button';
 import IconButton from 'react-toolbox/lib/button/IconButton';
 
+import '../../assets/react-toolbox/theme.css';
 
 class Test extends Component {
   render() {

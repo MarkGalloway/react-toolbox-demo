@@ -5,11 +5,16 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-redux": "^5.0.3",
     "react-router": "^3.0.2",
     "react-toolbox": "^2.0.0-beta.6",
-    "react-toolbox-themr": "^1.0.2"
+    "react-toolbox-themr": "^1.0.2",
+    "redux": "^3.6.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.1.1",
+    "eslint": "^3.17.1",
+    "eslint-plugin-react": "^6.10.0",
     "react-scripts": "0.9.4"
   },
   "scripts": {
