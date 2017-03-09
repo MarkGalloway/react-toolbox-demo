@@ -14,6 +14,7 @@ export default (
     <Route path="appraisals" component={Appraisals}>
       <IndexRoute component={Test}/>
     </Route>
+    { /* TODO */}
     { /* <Route path="create" component={CreateAppraisal}/> */ }
     { /* <Route path="list" component={ListAppraisals}/> */ }
     { /* <Route path="appraisals/:appraisalId" component={ViewAppraisal}/> */ }

@@ -1,22 +1,64 @@
-import React from 'react';
-import Navigation from 'react-toolbox/lib/navigation/Navigation';
-import Button from 'react-toolbox/lib/button/Button';
-import withReactRouterLink from '../withReactRouterLink';
+import React, {Component} from 'react';
+import {browserHistory} from 'react-router';
+import List from 'react-toolbox/lib/list/List';
+import ListItem from 'react-toolbox/lib/list/ListItem';
+import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
-const ReactRouterLink = withReactRouterLink(Button);
+class DrawerNavigation extends Component {
 
-function DrawerNavigation({closeDrawer}) {
-  return (
-    <div>
-      <Navigation type='vertical'>
-          <ReactRouterLink to='/appraisals' label='Appraisals' flat closeDrawer={closeDrawer}/>
-          <ReactRouterLink to='/tasks' label='Tasks' flat closeDrawer={closeDrawer}/>
-          <ReactRouterLink to='/appointments' label='Appointments' flat closeDrawer={closeDrawer}/>
-          <ReactRouterLink to='/settings' label='settings' flat closeDrawer={closeDrawer}/>
-          <ReactRouterLink to='/logout' label='logout' flat closeDrawer={closeDrawer}/>
-      </Navigation>
-    </div>
-  );
+  navigateTo(path='/') {
+    browserHistory.push(path);
+    this.props.closeDrawer();
+  }
+
+  render() {
+    return (
+      <List>
+        <ListItem
+          avatar='http://www.lovethispic.com/uploaded_images/24922-Nerdy-Dog.png'
+          caption='Test Salesperson'
+          legend='Strathcom BMW'
+        />
+        <ListDivider/>
+        <ListItem
+          selectable
+          ripple
+          caption='Appraisals'
+          onClick={() => this.navigateTo('/appraisals')}
+          leftIcon='send'
+        />
+        <ListItem
+          selectable
+          ripple
+          caption='Tasks'
+          onClick={() => this.navigateTo('/tasks')}
+          leftIcon='send'
+        />
+        <ListItem
+          selectable
+          ripple
+          caption='Appointments'
+          onClick={() => this.navigateTo('/appointments')}
+          leftIcon='send'
+        />
+        <ListItem
+          selectable
+          ripple
+          caption='Settings'
+          onClick={() => this.navigateTo('/settings')}
+          leftIcon='settings'
+        />
+        <ListItem
+          selectable
+          ripple
+          caption='Logout'
+          onClick={() => this.navigateTo('/logout')}
+          leftIcon='send'
+        />
+      </List>
+
+    )
+  }
 }
 
 export default DrawerNavigation;

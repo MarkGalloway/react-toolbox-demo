@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 import Layout from 'react-toolbox/lib/layout/Layout';
 import NavDrawer from 'react-toolbox/lib/layout/NavDrawer';
-import Panel from 'react-toolbox/lib/layout/Panel';
 
 import { toggleDrawer, closeDrawer } from '../../actions';
 import DrawerNavigation from './DrawerNavigation';
@@ -23,13 +22,11 @@ class App extends Component {
           <NavDrawer
             active={drawerActive}
             onOverlayClick={toggleDrawerActive}
-            // permanentAt='md'
+            permanentAt='md'
           >
             <DrawerNavigation closeDrawer={closeDrawer}/>
           </NavDrawer>
-          <Panel>
             {this.props.children}
-          </Panel>
         </Layout>
       </ThemeProvider>
     );
