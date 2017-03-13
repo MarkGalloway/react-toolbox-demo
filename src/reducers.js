@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
 
-import { TOGGLE_DRAWER_ACTIVE } from './actions';
-import { SET_DRAWER_ACTIVE } from './actions';
+import {
+  TOGGLE_DRAWER_ACTIVE, SET_DRAWER_ACTIVE, SET_APPRAISALS
+} from './actions';
 
 
 const APP_INITIAL_STATE = {
@@ -21,8 +22,24 @@ function appReducer(state = APP_INITIAL_STATE, action) {
 }
 
 
+const APPRAISALS_INITIAL_STATE = {
+  appraisals: []
+};
+
+
+function appraisalsReducer(state = APPRAISALS_INITIAL_STATE, action) {
+  switch(action.type) {
+    case SET_APPRAISALS:
+      return { ...state, appraisals: action.payload }
+    default:
+      return state
+  }
+}
+
+
 const rootReducer = combineReducers({
   app: appReducer,
+  appraisals: appraisalsReducer
 });
 
 

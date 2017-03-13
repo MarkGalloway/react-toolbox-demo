@@ -4,13 +4,13 @@ import Layout from 'react-toolbox/lib/layout/Layout';
 import Panel from 'react-toolbox/lib/layout/Panel';
 import Sidebar from 'react-toolbox/lib/layout/Sidebar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
-import IconButton from 'react-toolbox/lib/button/IconButton';
 import IconMenu from 'react-toolbox/lib/menu/IconMenu';
 import MenuItem from 'react-toolbox/lib/menu/MenuItem';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 
 import { toggleDrawer } from '../../actions';
 import SidebarFilters from './SidebarFilters';
+import ListItem from './ListItem';
 
 class Appraisals extends Component {
 
@@ -50,7 +50,11 @@ class Appraisals extends Component {
           </Navigation>
         </AppBar>
         <Panel>
-            {children}
+          {
+            appraisals.map(appraisal =>
+              <ListItem key={appraisal.id} appraisal={appraisal}/>
+            )
+          }
         </Panel>
         <Sidebar pinned={sidebarPinned} width={6}>
           <SidebarFilters onClose={() => this.toggleSidebar()}/>
@@ -60,10 +64,16 @@ class Appraisals extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    appraisals: state.appraisals.appraisals
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleDrawerActive: () => dispatch(toggleDrawer())
   }
 }
 
-export default connect(null, mapDispatchToProps)(Appraisals);
+export default connect(mapStateToProps, mapDispatchToProps)(Appraisals);

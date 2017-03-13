@@ -11,9 +11,7 @@ import Test from './components/Test';
 export default (
   <Route path="/" component={App}>
     <IndexRedirect to="/appraisals" />
-    <Route path="appraisals" component={Appraisals}>
-      <IndexRoute component={Test}/>
-    </Route>
+    <Route path="appraisals" component={Appraisals}/>
     { /* TODO */}
     { /* <Route path="create" component={CreateAppraisal}/> */ }
     { /* <Route path="list" component={ListAppraisals}/> */ }
