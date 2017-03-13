@@ -13,8 +13,7 @@ export default (
     <IndexRedirect to="/appraisals" />
     <Route path="appraisals" component={Appraisals}/>
     { /* TODO */}
-    { /* <Route path="create" component={CreateAppraisal}/> */ }
-    { /* <Route path="list" component={ListAppraisals}/> */ }
+    { /* <Route path="appraisals/create" component={CreateAppraisal}/> */ }
     { /* <Route path="appraisals/:appraisalId" component={ViewAppraisal}/> */ }
     { /* <Route path="appraisals/:appraisalId/edit" component={EditAppraisal}/> */ }
     <Route path="tasks" component={Desking}>

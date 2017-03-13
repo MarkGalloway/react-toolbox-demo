@@ -25,3 +25,10 @@ export function setAppraisals(appraisails=[]) {
   }
 }
 
+export function loadInitialData() {
+  return function(dispatch) {
+    return Promise.resolve(
+      dispatch(setAppraisals(appraisals.appraisals))
+    )
+  }
+}
