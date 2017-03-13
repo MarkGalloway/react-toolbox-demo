@@ -17,7 +17,7 @@
     "bought_at": null,
     "appraiser": "Fred Flintstone",
     "appraised_by": "Fred Flintstone",
-    "mileage": 60000,
+    "odometer": 60000,
     "vin": "5J8TB4H50DL800415"
   }, {
     "id": 123457,
@@ -37,7 +37,7 @@
     "bought_at": null,
     "appraiser": "Fred Flintstone",
     "appraised_by": "Fred Flintstone",
-    "mileage": 60000,
+    "odometer": 60000,
     "vin": "1HGCR3F93FA800306"
   }, {
     "id": 123458,
@@ -57,7 +57,7 @@
     "bought_at": null,
     "appraiser": "Fred Flintstone",
     "appraised_by": "Fred Flintstone",
-    "mileage": 60000,
+    "odometer": 60000,
     "vin": "1HGCR3F93FA800306"
   }, {
     "id": 123459,
@@ -77,7 +77,7 @@
     "bought_at": null,
     "appraiser": "Fred Flintstone",
     "appraised_by": "Fred Flintstone",
-    "mileage": 60000,
+    "odometer": 60000,
     "vin": "1GYUKBEF6AR151260"
   }]
 }

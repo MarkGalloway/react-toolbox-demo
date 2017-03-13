@@ -11,10 +11,10 @@ import Test from './components/Test';
 export default (
   <Route path="/" component={App}>
     <IndexRedirect to="/appraisals" />
-    <Route path="appraisals" component={Appraisals}/>
+    <Route path="appraisals" component={Appraisals.List}/>
+    <Route path="appraisals/:appraisalId" component={Appraisals.Detail}/>
     { /* TODO */}
     { /* <Route path="appraisals/create" component={CreateAppraisal}/> */ }
-    { /* <Route path="appraisals/:appraisalId" component={ViewAppraisal}/> */ }
     { /* <Route path="appraisals/:appraisalId/edit" component={EditAppraisal}/> */ }
     <Route path="tasks" component={Desking}>
       <IndexRoute component={EmptyPage}/>

@@ -1,43 +1,35 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router';
 import moment from 'moment';
-import Card from 'react-toolbox/lib/card/Card';
-import CardTitle from 'react-toolbox/lib/card/CardTitle';
-import CardText from 'react-toolbox/lib/card/CardText';
-import CardActions from 'react-toolbox/lib/card/CardActions';
+import { formatPrice, formatWithCommas } from '../../utils';
+import CbbBadge from './CbbBadge';
 import Button from 'react-toolbox/lib/button/Button';
 
-import { formatPrice } from '../../utils';
-import CbbBadge from './CbbBadge';
-
-const CARD_STYLE = {
-  margin: '5px 0px'
+const DETAIL_STYLE = {
+  padding: '5%',
+  // display: 'flex',
+  // flexDirection: 'column',
+  // justifyContent: 'space-between'
 }
 
-export class ListItem extends Component {
-
+export class DetailItem extends Component {
   render() {
     const {
       id, year, make, model, customer, cbb_status, appraised_value,
       estimated_recon, average_market_price, cbb_wholesale,
-      created, modified, vin
+      created, modified, vin, appraised_by, odometer
     } = this.props.appraisal;
 
     return (
-      <Card style={CARD_STYLE}>
-        <div style={{display: 'flex', flexFlow: 'row wrap', alignItems: 'baseline'}}>
-          <CardTitle
-            style={{flex: 1}}
-            title={`${year} ${make} ${model}`}
-            subtitle={vin}
-          />
+      <div style={DETAIL_STYLE}>
+        <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div><strong>{`${year} ${make} ${model}`}</strong></div>
           <CbbBadge status={cbb_status}/>
         </div>
-        <CardText>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
-            <div>Customer</div>
-            <div>{customer}</div>
-          </div>
+        <div>{vin}</div>
+        <div style={{padding: '1rem 0'}}>
+          Customer: {customer}
+        </div>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <div>Appraised</div>
             <div><strong>{formatPrice(appraised_value)}</strong></div>
@@ -55,6 +47,14 @@ export class ListItem extends Component {
             <div><strong>{formatPrice(cbb_wholesale)}</strong></div>
           </div>
           <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div>Odometer</div>
+            <div>{formatWithCommas(odometer)} kms</div>
+          </div>
+          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+            <div>Appraised By</div>
+            <div>{appraised_by}</div>
+          </div>
+          <div style={{display: 'flex', justifyContent: 'space-between'}}>
             <div>Created</div>
             <div>{moment(created).format("ddd, MMM D, YYYY")}</div>
           </div>
@@ -62,23 +62,21 @@ export class ListItem extends Component {
             <div>Modified</div>
             <div>{moment(modified).format("ddd, MMM D, YYYY")}</div>
           </div>
-        </CardText>
-        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
-          <CardActions>
+          <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '1.0rem'}}>
             <Button
-              label="VIEW"
+              label="BACK"
               primary
-              onClick={() => browserHistory.push(`/appraisals/${id}`)}/>
+              onClick={() => browserHistory.push(`/appraisals`)}
+            />
             <Button
               label="EDIT"
               accent
               onClick={() => browserHistory.push(`/appraisals/${id}/edit`)}
             />
-          </CardActions>
-        </div>
-      </Card>
+          </div>
+      </div>
     );
   }
 }
 
-export default ListItem;
+export default DetailItem;

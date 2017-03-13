@@ -12,7 +12,7 @@ import { toggleDrawer } from '../../actions';
 import SidebarFilters from './SidebarFilters';
 import ListItem from './ListItem';
 
-class Appraisals extends Component {
+class List extends Component {
 
   state = {
     sidebarPinned: false
@@ -76,4 +76,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Appraisals);
+export default connect(mapStateToProps, mapDispatchToProps)(List);
