@@ -10,6 +10,7 @@ import MenuItem from 'react-toolbox/lib/menu/MenuItem';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 
 import { toggleDrawer } from '../../actions';
+import SidebarFilters from './SidebarFilters';
 
 class Appraisals extends Component {
 
@@ -17,14 +18,15 @@ class Appraisals extends Component {
     sidebarPinned: false
   };
 
-  toggleSidebar = () => {
+  toggleSidebar() {
     this.setState(prevState => (
       { sidebarPinned: !prevState.sidebarPinned }
     ));
-  };
+  }
 
   render() {
-    const { toggleDrawerActive, children} = this.props;
+    const { toggleDrawerActive, appraisals } = this.props;
+    const { sidebarPinned } = this.state;
 
     return (
       <Layout>
@@ -34,7 +36,7 @@ class Appraisals extends Component {
           leftIcon='menu'
           onLeftIconClick={ toggleDrawerActive }
           rightIcon='filter_list'
-          onRightIconClick={this.toggleSidebar}
+          onRightIconClick={() => this.toggleSidebar()}
         >
           <Navigation type='horizontal'>
             {/* TODO: Add style for visible icon... */}
@@ -50,11 +52,8 @@ class Appraisals extends Component {
         <Panel>
             {children}
         </Panel>
-        <Sidebar pinned={this.state.sidebarPinned} width={6}>
-          <div>
-            <IconButton icon='close' onClick={this.toggleSidebar}/>
-          </div>
-          <p>Filters go here</p>
+        <Sidebar pinned={sidebarPinned} width={6}>
+          <SidebarFilters onClose={() => this.toggleSidebar()}/>
         </Sidebar>
       </Layout>
     );
