@@ -63,7 +63,7 @@ export class ListItem extends Component {
             <div>{moment(modified).format("ddd, MMM D, YYYY")}</div>
           </div>
         </CardText>
-        <div style={{display: 'flex', justifyContent: 'flex-end'}}>
+        <div>
           <CardActions>
             <Button
               label="VIEW"

@@ -22,7 +22,7 @@ function ReactToolboxInput({input, label, type, meta: { touched, error }, ...res
 }
 
 
-export class EditForm extends Component {
+export class AppraisalForm extends Component {
   render() {
     const { handleSubmit, pristine, reset, submitting, onSubmit } = this.props;
 
@@ -34,6 +34,18 @@ export class EditForm extends Component {
               name="vin"
               type="text"
               label="VIN"
+              component={ReactToolboxInput}
+            />
+            <Field
+              name="customer"
+              type="text"
+              label="Customer Name"
+              component={ReactToolboxInput}
+            />
+            <Field
+              name="phone"
+              type="text"
+              label="Customer Phone Number"
               component={ReactToolboxInput}
             />
             <Field
@@ -54,6 +66,13 @@ export class EditForm extends Component {
               type="text"
               label="Model"
               component={ReactToolboxInput}
+            />
+            <Field
+              name="odometer"
+              type="number"
+              label="Odometer (kms)"
+              component={ReactToolboxInput}
+              normalize={value => parseInt(value)}
             />
             <Field
               name="appraised_value"
@@ -105,4 +124,4 @@ export class EditForm extends Component {
   }
 }
 
-export default reduxForm({form: 'editAppraisal'})(EditForm);
+export default reduxForm({form: 'appraisal'})(AppraisalForm);

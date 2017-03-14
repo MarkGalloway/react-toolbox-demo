@@ -6,25 +6,26 @@ import Panel from 'react-toolbox/lib/layout/Panel';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Button from 'react-toolbox/lib/button/Button';
 
-import { toggleDrawer, updateAppraisal } from '../../actions';
+import { toggleDrawer, addAppraisal } from '../../actions';
 import AppraisalForm from './AppraisalForm';
 
-export class Edit extends Component {
+
+export class Create extends Component {
 
   onSubmit(values) {
-    const { appraisal, updateAppraisal } = this.props;
-    updateAppraisal(appraisal.id, values);
-    browserHistory.push(`/appraisals/${appraisal.id}`)
+    const { addAppraisal } = this.props;
+    addAppraisal(values);
+    browserHistory.push('/appraisals')
   }
 
   render() {
-    const { appraisal, toggleDrawerActive } = this.props;
+    const { toggleDrawerActive } = this.props;
 
     return (
       <Layout>
         <AppBar
           fixed
-          title={`Appraisal #${appraisal.id}`}
+          title={`New Appraisal`}
           leftIcon='menu'
           onLeftIconClick={ toggleDrawerActive }
         />
@@ -35,28 +36,20 @@ export class Edit extends Component {
               flat
               onClick={browserHistory.goBack}
             />
-            <AppraisalForm
-              initialValues={appraisal}
-              onSubmit={values => this.onSubmit(values)}
-            />
+          <AppraisalForm
+            onSubmit={values => this.onSubmit(values)}
+          />
         </Panel>
       </Layout>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
-  const appraisals = state.appraisals.appraisals;
-  return {
-    appraisal: appraisals.find(a => a.id == ownProps.params.appraisalId)
-  }
-}
-
 const mapDispatchToProps = (dispatch) => {
   return {
     toggleDrawerActive: () => dispatch(toggleDrawer()),
-    updateAppraisal: (appraisal_id, data) => dispatch(updateAppraisal(appraisal_id, data))
+    addAppraisal: data => dispatch(addAppraisal(data))
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Edit);
+export default connect(null, mapDispatchToProps)(Create);

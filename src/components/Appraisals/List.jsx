@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { browserHistory } from 'react-router';
 import Layout from 'react-toolbox/lib/layout/Layout';
 import Panel from 'react-toolbox/lib/layout/Panel';
 import Sidebar from 'react-toolbox/lib/layout/Sidebar';
@@ -7,6 +8,7 @@ import Navigation from 'react-toolbox/lib/navigation/Navigation';
 import IconMenu from 'react-toolbox/lib/menu/IconMenu';
 import MenuItem from 'react-toolbox/lib/menu/MenuItem';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
+import Button from 'react-toolbox/lib/button/Button';
 
 import { toggleDrawer } from '../../actions';
 import SidebarFilters from './SidebarFilters';
@@ -55,6 +57,13 @@ class List extends Component {
               <ListItem key={appraisal.id} appraisal={appraisal}/>
             )
           }
+          <Button
+            style={{position: 'fixed', right: '0.5rem', 'bottom': '0.5rem'}}
+            icon='add'
+            accent
+            floating
+            onClick={() => browserHistory.push('/appraisals/create')}
+          />
         </Panel>
         <Sidebar pinned={sidebarPinned} width={6}>
           <SidebarFilters onClose={() => this.toggleSidebar()}/>

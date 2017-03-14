@@ -3,7 +3,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import {
   TOGGLE_DRAWER_ACTIVE, SET_DRAWER_ACTIVE, SET_APPRAISALS,
-  UPDATE_APPRAISAL
+  UPDATE_APPRAISAL, ADD_APPRAISAL
 } from './actions';
 
 
@@ -33,6 +33,8 @@ function appraisalsReducer(state = APPRAISALS_INITIAL_STATE, action) {
   switch(action.type) {
     case SET_APPRAISALS:
       return { ...state, appraisals: action.payload }
+    case ADD_APPRAISAL:
+      return { ...state, appraisals: [ ...state.appraisals, action.payload ] }
     case UPDATE_APPRAISAL:
       return {
         ...state,
