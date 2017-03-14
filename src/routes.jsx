@@ -13,9 +13,9 @@ export default (
     <IndexRedirect to="/appraisals" />
     <Route path="appraisals" component={Appraisals.List}/>
     <Route path="appraisals/:appraisalId" component={Appraisals.Detail}/>
+    <Route path="appraisals/:appraisalId/edit" component={Appraisals.Edit}/>
     { /* TODO */}
     { /* <Route path="appraisals/create" component={CreateAppraisal}/> */ }
-    { /* <Route path="appraisals/:appraisalId/edit" component={EditAppraisal}/> */ }
     <Route path="tasks" component={Desking}>
       <IndexRoute component={EmptyPage}/>
     </Route>

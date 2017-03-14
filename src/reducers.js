@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
+import { reducer as formReducer } from 'redux-form';
 
 import {
-  TOGGLE_DRAWER_ACTIVE, SET_DRAWER_ACTIVE, SET_APPRAISALS
+  TOGGLE_DRAWER_ACTIVE, SET_DRAWER_ACTIVE, SET_APPRAISALS,
+  UPDATE_APPRAISAL
 } from './actions';
 
 
@@ -31,6 +33,15 @@ function appraisalsReducer(state = APPRAISALS_INITIAL_STATE, action) {
   switch(action.type) {
     case SET_APPRAISALS:
       return { ...state, appraisals: action.payload }
+    case UPDATE_APPRAISAL:
+      return {
+        ...state,
+        appraisals: state.appraisals.map(appraisal =>
+          appraisal.id === action.payload.id
+            ? {...appraisal, ...action.payload}
+            : appraisal
+        )
+      }
     default:
       return state
   }
@@ -39,7 +50,8 @@ function appraisalsReducer(state = APPRAISALS_INITIAL_STATE, action) {
 
 const rootReducer = combineReducers({
   app: appReducer,
-  appraisals: appraisalsReducer
+  appraisals: appraisalsReducer,
+  form: formReducer
 });
 
 

@@ -7,9 +7,6 @@ import Button from 'react-toolbox/lib/button/Button';
 
 const DETAIL_STYLE = {
   padding: '5%',
-  // display: 'flex',
-  // flexDirection: 'column',
-  // justifyContent: 'space-between'
 }
 
 export class DetailItem extends Component {
