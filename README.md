@@ -1,4 +1,5 @@
 # Demo project to evaluate React Toolbox 2.0 (beta)
+[Live Demo](http://appraisals-reacttoolbox-demo.surge.sh/)
 
 ## Gotchas
 
