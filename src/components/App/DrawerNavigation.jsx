@@ -4,6 +4,10 @@ import List from 'react-toolbox/lib/list/List';
 import ListItem from 'react-toolbox/lib/list/ListItem';
 import ListDivider from 'react-toolbox/lib/list/ListDivider';
 
+const propTypes = {
+  closeDrawer: React.PropTypes.func.isRequired
+}
+
 class DrawerNavigation extends Component {
 
   navigateTo(path='/') {
@@ -60,5 +64,7 @@ class DrawerNavigation extends Component {
     )
   }
 }
+
+DrawerNavigation.propTypes = propTypes;
 
 export default DrawerNavigation;

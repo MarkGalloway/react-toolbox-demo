@@ -5,8 +5,24 @@ import { formatPrice, formatWithCommas } from '../../utils';
 import CbbBadge from './CbbBadge';
 import Button from 'react-toolbox/lib/button/Button';
 
-const DETAIL_STYLE = {
-  padding: '5%',
+const propTypes = {
+  appraisal: React.PropTypes.shape({
+    id: React.PropTypes.node.isRequired,
+    year: React.PropTypes.node.isRequired,
+    make: React.PropTypes.string.isRequired,
+    model: React.PropTypes.string.isRequired,
+    customer: React.PropTypes.string.isRequired,
+    cbb_status: React.PropTypes.string.isRequired,
+    appraised_value: React.PropTypes.number.isRequired,
+    estimated_recon: React.PropTypes.number.isRequired,
+    average_market_price: React.PropTypes.number.isRequired,
+    cbb_wholesale: React.PropTypes.number.isRequired,
+    created: React.PropTypes.number.isRequired,
+    modified: React.PropTypes.number.isRequired,
+    vin: React.PropTypes.string.isRequired,
+    appraised_by: React.PropTypes.string.isRequired,
+    odometer: React.PropTypes.number.isRequired
+  }).isRequired
 }
 
 export class DetailItem extends Component {
@@ -18,48 +34,62 @@ export class DetailItem extends Component {
     } = this.props.appraisal;
 
     return (
-      <div style={DETAIL_STYLE}>
-        <div style={{display: 'flex', justifyContent: 'space-between'}}>
-          <div><strong>{`${year} ${make} ${model}`}</strong></div>
+      <div className="Appraisal-detail">
+        <div className="Appraisal-item-header">
+          <div>
+            <div className="Appraisal-item-vehicle">
+              {`${year} ${make} ${model}`}
+            </div>
+            <div className="Appraisal-item-vin">
+              {vin}
+            </div>
+          </div>
           <CbbBadge status={cbb_status}/>
         </div>
-        <div>{vin}</div>
-        <div style={{padding: '1rem 0'}}>
+        <div className="Appraisal-item-customer">
           Customer: {customer}
         </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Appraised</div>
-            <div><strong>{formatPrice(appraised_value)}</strong></div>
+            <div className="Appraisal-item-price">
+              {formatPrice(appraised_value)}
+            </div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Est Recon</div>
-            <div><strong>{formatPrice(estimated_recon)}</strong></div>
+            <div className="Appraisal-item-price">
+              {formatPrice(estimated_recon)}
+            </div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Avg Market</div>
-            <div><strong>{formatPrice(average_market_price)}</strong></div>
+            <div className="Appraisal-item-price">
+              {formatPrice(average_market_price)}
+            </div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>CBB Wholesale</div>
-            <div><strong>{formatPrice(cbb_wholesale)}</strong></div>
+            <div className="Appraisal-item-price">
+              {formatPrice(cbb_wholesale)}
+            </div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Odometer</div>
             <div>{formatWithCommas(odometer)} kms</div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Appraised By</div>
             <div>{appraised_by}</div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Created</div>
             <div>{moment(created).format("ddd, MMM D, YYYY")}</div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-item-detail">
             <div>Modified</div>
             <div>{moment(modified).format("ddd, MMM D, YYYY")}</div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'flex-end', marginTop: '1.0rem'}}>
+          <div className="Appraisal-item-actions">
             <Button
               label="BACK"
               primary
@@ -75,5 +105,7 @@ export class DetailItem extends Component {
     );
   }
 }
+
+DetailItem.propTypes = propTypes;
 
 export default DetailItem;

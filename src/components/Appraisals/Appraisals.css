@@ -1,0 +1,71 @@
+.Appraisals-cbb-badge {
+  color: white;
+}
+
+.Appraisals-cbb-complete {
+  background-color: green;
+}
+
+.Appraisals-cbb-incomplete {
+  background-color: red;
+}
+
+.Appraisals-cbb-not-bookable {
+  background-color: purple;
+}
+
+.Appraisal-detail {
+  padding: 1.5rem;
+}
+
+.Appraisal-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Appraisal-item-vehicle {
+  font-weight: bold;
+}
+
+.Appraisal-item-vin {
+  color: #757575;
+}
+
+.Appraisal-item-customer {
+  padding: 1.0rem 0;
+}
+
+.Appraisal-item-detail {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Appraisal-item-price {
+  font-weight: bold;
+}
+
+.Appraisal-item-actions {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.0rem;
+}
+
+.Appraisal-form {
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.Appraisal-fab {
+  position: fixed;
+  right: 0.5rem;
+  bottom: 0.5rem;
+}
+
+.Appraisal-sort-icon button {
+  color: #fff !important;
+}
+
+.Appraisal-filters {
+  padding: 0 1.0rem;
+}

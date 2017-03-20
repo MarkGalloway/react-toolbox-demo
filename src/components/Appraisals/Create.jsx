@@ -9,6 +9,10 @@ import Button from 'react-toolbox/lib/button/Button';
 import { toggleDrawer, addAppraisal } from '../../actions';
 import AppraisalForm from './AppraisalForm';
 
+const propTypes = {
+  addAppraisal: React.PropTypes.func.isRequired,
+  toggleDrawerActive: React.PropTypes.func.isRequired
+}
 
 export class Create extends Component {
 
@@ -44,6 +48,8 @@ export class Create extends Component {
     );
   }
 }
+
+Create.propTypes = propTypes;
 
 const mapDispatchToProps = (dispatch) => {
   return {

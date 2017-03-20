@@ -2,27 +2,33 @@ import React from 'react';
 import Chip from 'react-toolbox/lib/chip/Chip';
 
 
+const propTypes = {
+  status: React.PropTypes.string.isRequired
+}
+
 function CbbBadge({status}) {
   switch(status) {
     case "Complete":
       return (
-        <Chip style={{backgroundColor: 'green', color: 'white'}}>
+        <Chip className="Appraisals-cbb-badge Appraisals-cbb-complete">
           CBB Complete
         </Chip>
       )
     case "Incomplete":
       return (
-        <Chip style={{backgroundColor: 'red', color: 'white'}}>
+        <Chip className="Appraisals-cbb-badge Appraisals-cbb-incomplete">
           CBB Incomplete
         </Chip>
       )
     default:
       return (
-        <Chip style={{backgroundColor: 'purple', color: 'white'}}>
+        <Chip className="Appraisals-cbb-badge Appraisals-cbb-not-bookable">
           Not Bookable
         </Chip>
       )
   }
 }
+
+CbbBadge.propTypes = propTypes;
 
 export default CbbBadge

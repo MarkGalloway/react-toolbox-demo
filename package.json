@@ -23,8 +23,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start:public": "HOST=\"0.0.0.0\" react-scripts start",
-    "build": "react-scripts build",
+    "start:public": "react-scripts start",
+    "build": "react-scripts build && cp build/index.html build/200.html",
     "test": "react-scripts test --env=jsdom",
     "toolbox": "react-toolbox-themr",
     "eject": "react-scripts eject"

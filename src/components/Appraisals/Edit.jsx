@@ -9,6 +9,12 @@ import Button from 'react-toolbox/lib/button/Button';
 import { toggleDrawer, updateAppraisal } from '../../actions';
 import AppraisalForm from './AppraisalForm';
 
+const propTypes = {
+  appraisal: React.PropTypes.object.isRequired,
+  updateAppraisal: React.PropTypes.func.isRequired,
+  toggleDrawerActive: React.PropTypes.func.isRequired
+}
+
 export class Edit extends Component {
 
   onSubmit(values) {
@@ -45,10 +51,13 @@ export class Edit extends Component {
   }
 }
 
+Edit.propTypes = propTypes;
+
 const mapStateToProps = (state, ownProps) => {
   const appraisals = state.appraisals.appraisals;
+  const appraisalId = parseInt(ownProps.params.appraisalId, 10);
   return {
-    appraisal: appraisals.find(a => a.id == ownProps.params.appraisalId)
+    appraisal: appraisals.find(a => a.id === appraisalId)
   }
 }
 

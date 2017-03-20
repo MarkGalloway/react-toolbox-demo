@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import ThemeProvider from 'react-toolbox/lib/ThemeProvider';
 import Layout from 'react-toolbox/lib/layout/Layout';
@@ -12,26 +12,33 @@ import DrawerNavigation from './DrawerNavigation';
 import '../../../assets/react-toolbox/theme.css';
 import theme from '../../../assets/react-toolbox/theme';
 
-class App extends Component {
-  render() {
-    const { drawerActive, toggleDrawerActive, closeDrawer } = this.props;
 
-    return (
-      <ThemeProvider theme={theme}>
-        <Layout>
-          <NavDrawer
-            active={drawerActive}
-            onOverlayClick={toggleDrawerActive}
-            permanentAt='md'
-          >
-            <DrawerNavigation closeDrawer={closeDrawer}/>
-          </NavDrawer>
-            {this.props.children}
-        </Layout>
-      </ThemeProvider>
-    );
-  }
+const propTypes = {
+  drawerActive: React.PropTypes.bool.isRequired,
+  toggleDrawerActive: React.PropTypes.func.isRequired,
+  closeDrawer: React.PropTypes.func.isRequired,
+  children: React.PropTypes.any
 }
+
+
+function App({ drawerActive, toggleDrawerActive, closeDrawer, children }) {
+  return (
+    <ThemeProvider theme={theme}>
+      <Layout>
+        <NavDrawer
+          active={drawerActive}
+          onOverlayClick={toggleDrawerActive}
+          permanentAt='md'
+        >
+          <DrawerNavigation closeDrawer={closeDrawer}/>
+        </NavDrawer>
+          {children}
+      </Layout>
+    </ThemeProvider>
+  );
+}
+
+App.propTypes = propTypes;
 
 const mapStateToProps = (state) => {
   return {

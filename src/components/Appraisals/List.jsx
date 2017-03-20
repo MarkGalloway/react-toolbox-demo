@@ -5,14 +5,19 @@ import Layout from 'react-toolbox/lib/layout/Layout';
 import Panel from 'react-toolbox/lib/layout/Panel';
 import Sidebar from 'react-toolbox/lib/layout/Sidebar';
 import Navigation from 'react-toolbox/lib/navigation/Navigation';
-import IconMenu from 'react-toolbox/lib/menu/IconMenu';
-import MenuItem from 'react-toolbox/lib/menu/MenuItem';
 import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 import Button from 'react-toolbox/lib/button/Button';
 
 import { toggleDrawer } from '../../actions';
+import SortMenu from './SortMenu';
 import SidebarFilters from './SidebarFilters';
 import ListItem from './ListItem';
+
+const propTypes = {
+  appraisals: React.PropTypes.array.isRequired,
+  toggleDrawerActive: React.PropTypes.func.isRequired
+}
+
 
 class List extends Component {
 
@@ -41,14 +46,7 @@ class List extends Component {
           onRightIconClick={() => this.toggleSidebar()}
         >
           <Navigation type='horizontal'>
-            {/* TODO: Add style for visible icon... */}
-            <IconMenu icon='sort' position='topRight' menuRipple>
-              {/* TODO: can track selected item and select here */}
-              <MenuItem value='id' caption='ID'/>
-              <MenuItem value='appraised' caption='Appraised Value'/>
-              <MenuItem value='created' caption='Created Date'/>
-              <MenuItem value='modified' caption='Modified Date'/>
-            </IconMenu>
+            <SortMenu />
           </Navigation>
         </AppBar>
         <Panel>
@@ -58,7 +56,7 @@ class List extends Component {
             )
           }
           <Button
-            style={{position: 'fixed', right: '0.5rem', 'bottom': '0.5rem'}}
+            className="Appraisal-fab"
             icon='add'
             accent
             floating
@@ -72,6 +70,8 @@ class List extends Component {
     );
   }
 }
+
+List.propTypes = propTypes;
 
 const mapStateToProps = (state) => {
   return {

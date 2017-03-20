@@ -6,6 +6,11 @@ import AppBar from 'react-toolbox/lib/app_bar/AppBar';
 
 import { toggleDrawer } from '../actions';
 
+const propTypes = {
+  toggleDrawerActive: React.PropTypes.func.isRequired,
+  children: React.PropTypes.any,
+}
+
 class Desking extends Component {
 
   render() {
@@ -15,7 +20,7 @@ class Desking extends Component {
           fixed
           title='Desking'
           leftIcon='menu'
-          onLeftIconClick={ this.props.toggleDrawerActive }
+          onLeftIconClick={this.props.toggleDrawerActive}
         />
         <Panel>
           {this.props.children}
@@ -25,6 +30,7 @@ class Desking extends Component {
   }
 }
 
+Desking.propTypes = propTypes;
 
 const mapDispatchToProps = (dispatch) => {
   return {

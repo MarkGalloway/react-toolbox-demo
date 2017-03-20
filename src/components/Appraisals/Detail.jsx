@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import Layout from 'react-toolbox/lib/layout/Layout';
@@ -9,36 +9,43 @@ import Button from 'react-toolbox/lib/button/Button';
 import { toggleDrawer } from '../../actions';
 import DetailItem from './DetailItem';
 
-export class Detail extends Component {
-  render() {
-    const { toggleDrawerActive, appraisal } = this.props;
-    return (
-      <Layout>
-        <AppBar
-          fixed
-          title={`Appraisal #${appraisal.id}`}
-          leftIcon='menu'
-          onLeftIconClick={ toggleDrawerActive }
-        />
-        <Panel>
-          <Button
-            icon='arrow_back'
-            label='Back'
-            flat
-            primary
-            onClick={browserHistory.goBack}
-          />
-          <DetailItem appraisal={appraisal}/>
-        </Panel>
-      </Layout>
-    );
-  }
+const propTypes = {
+  appraisal: React.PropTypes.object.isRequired,
+  toggleDrawerActive: React.PropTypes.func.isRequired
 }
+
+
+function Detail({ toggleDrawerActive, appraisal }) {
+  return (
+    <Layout>
+      <AppBar
+        fixed
+        title={`Appraisal #${appraisal.id}`}
+        leftIcon='menu'
+        onLeftIconClick={ toggleDrawerActive }
+      />
+      <Panel>
+        <Button
+          icon='arrow_back'
+          label='Back'
+          flat
+          primary
+          onClick={browserHistory.goBack}
+        />
+        <DetailItem appraisal={appraisal}/>
+      </Panel>
+    </Layout>
+  );
+}
+
+Detail.propTypes = propTypes;
 
 const mapStateToProps = (state, ownProps) => {
   const appraisals = state.appraisals.appraisals;
+  const appraisalId = parseInt(ownProps.params.appraisalId, 10);
+
   return {
-    appraisal: appraisals.find(a => a.id == ownProps.params.appraisalId)
+    appraisal: appraisals.find(a => a.id === appraisalId)
   }
 }
 

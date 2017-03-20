@@ -3,11 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import Input from 'react-toolbox/lib/input/Input';
 import Button from 'react-toolbox/lib/button/Button';
 
-const EDIT_STYLE = {
-  paddingLeft: '5%',
-  paddingRight: '5%',
-}
-
 
 function ReactToolboxInput({input, label, type, meta: { touched, error }, ...rest}) {
   return (
@@ -27,7 +22,7 @@ export class AppraisalForm extends Component {
     const { handleSubmit, pristine, reset, submitting, onSubmit } = this.props;
 
     return (
-      <section style={EDIT_STYLE}>
+      <section className="Appraisal-form">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div>
             <Field
@@ -53,7 +48,7 @@ export class AppraisalForm extends Component {
               type="number"
               label="Year"
               component={ReactToolboxInput}
-              normalize={value => parseInt(value)}
+              normalize={value => parseInt(value, 10)}
             />
             <Field
               name="make"
@@ -72,35 +67,35 @@ export class AppraisalForm extends Component {
               type="number"
               label="Odometer (kms)"
               component={ReactToolboxInput}
-              normalize={value => parseInt(value)}
+              normalize={value => parseInt(value, 10)}
             />
             <Field
               name="appraised_value"
               type="number"
               label="Appraised Value"
               component={ReactToolboxInput}
-              normalize={value => parseInt(value)}
+              normalize={value => parseInt(value, 10)}
             />
             <Field
               name="estimated_recon"
               type="number"
               label="Estimated Recon"
               component={ReactToolboxInput}
-              normalize={value => parseInt(value)}
+              normalize={value => parseInt(value, 10)}
             />
             <Field
               name="average_market_price"
               type="number"
               label="Average Market Price"
               component={ReactToolboxInput}
-              normalize={value => parseInt(value)}
+              normalize={value => parseInt(value, 10)}
             />
             <Field
               name="cbb_wholesale"
               type="number"
               label="CBB Wholesale"
               component={ReactToolboxInput}
-              normalize={value => parseInt(value)}
+              normalize={value => parseInt(value, 10)}
             />
           </div>
           <Button

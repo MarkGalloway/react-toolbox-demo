@@ -16,6 +16,10 @@ const STATUSES = {
   lost: 'Lost',
 }
 
+const propTypes = {
+  onClose: React.PropTypes.func.isRequired
+}
+
 class SidebarFilters extends Component {
   constructor(props) {
     super(props);
@@ -43,7 +47,7 @@ class SidebarFilters extends Component {
     return (
       <div>
         <IconButton icon='close' onClick={onClose}/>
-        <div style={{padding: '0 5%'}}>
+        <div className="Appraisal-filters">
           <h2>Filters</h2>
           <Checkbox
             checked={checkbox}
@@ -90,5 +94,7 @@ class SidebarFilters extends Component {
     );
   }
 }
+
+SidebarFilters.propTypes = propTypes;
 
 export default SidebarFilters;
