@@ -10,8 +10,23 @@ import Button from 'react-toolbox/lib/button/Button';
 import { formatPrice } from '../../utils';
 import CbbBadge from './CbbBadge';
 
-const CARD_STYLE = {
-  margin: '5px 0px'
+
+const propTypes = {
+  appraisal: React.PropTypes.shape({
+    id: React.PropTypes.node.isRequired,
+    year: React.PropTypes.node.isRequired,
+    make: React.PropTypes.string.isRequired,
+    model: React.PropTypes.string.isRequired,
+    customer: React.PropTypes.string.isRequired,
+    cbb_status: React.PropTypes.string.isRequired,
+    appraised_value: React.PropTypes.number.isRequired,
+    estimated_recon: React.PropTypes.number.isRequired,
+    average_market_price: React.PropTypes.number.isRequired,
+    cbb_wholesale: React.PropTypes.number.isRequired,
+    created: React.PropTypes.number.isRequired,
+    modified: React.PropTypes.number.isRequired,
+    vin: React.PropTypes.string.isRequired,
+  }).isRequired
 }
 
 export class ListItem extends Component {
@@ -24,8 +39,8 @@ export class ListItem extends Component {
     } = this.props.appraisal;
 
     return (
-      <Card style={CARD_STYLE}>
-        <div style={{display: 'flex', flexFlow: 'row wrap', alignItems: 'baseline'}}>
+      <Card className="Appraisal-card">
+        <div className="Appraisal-card-title">
           <CardTitle
             style={{flex: 1}}
             title={`${year} ${make} ${model}`}
@@ -34,31 +49,31 @@ export class ListItem extends Component {
           <CbbBadge status={cbb_status}/>
         </div>
         <CardText>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>Customer</div>
             <div>{customer}</div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>Appraised</div>
             <div><strong>{formatPrice(appraised_value)}</strong></div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>Est Recon</div>
             <div><strong>{formatPrice(estimated_recon)}</strong></div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>Avg Market</div>
             <div><strong>{formatPrice(average_market_price)}</strong></div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>CBB Wholesale</div>
             <div><strong>{formatPrice(cbb_wholesale)}</strong></div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>Created</div>
             <div>{moment(created).format("ddd, MMM D, YYYY")}</div>
           </div>
-          <div style={{display: 'flex', justifyContent: 'space-between'}}>
+          <div className="Appraisal-card-detail-item">
             <div>Modified</div>
             <div>{moment(modified).format("ddd, MMM D, YYYY")}</div>
           </div>
@@ -80,5 +95,7 @@ export class ListItem extends Component {
     );
   }
 }
+
+ListItem.propTypes = propTypes;
 
 export default ListItem;

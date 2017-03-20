@@ -69,3 +69,18 @@
 .Appraisal-filters {
   padding: 0 1.0rem;
 }
+
+.Appraisal-card {
+  margin: 5px 0;
+}
+
+.Appraisal-card-title {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: baseline;
+}
+
+.Appraisal-card-detail-item {
+  display: flex;
+  justify-content: space-between;
+}
