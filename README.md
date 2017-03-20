@@ -1,6 +1,8 @@
 # Demo project to evaluate React Toolbox 2.0 (beta)
 [Live Demo](http://appraisals-reacttoolbox-demo.surge.sh/)
 
+This demo was designed "Mobile First" and is best viewed on a mobile device or small screen.
+
 ## Gotchas
 
 ### Using react-toolbox with create-react-app
@@ -32,12 +34,6 @@ http://google.github.io/material-design-icons/#getting-icons
 
 ### Layout Component
 Navdrawer acts funny if it is wrapped (eg/ redux). Need to keep it natural at top level below Layout
-
-
-### NavDrawer (Bug)
-NavDrawer using List Items ripple going outside of bounds
-Maybe fixed here:
-[github](https://github.com/react-toolbox/react-toolboxcommit/8a4b628d1b740c2e6d84b4a6b708cc198f835f3e)
 
 
 ### AppBar
