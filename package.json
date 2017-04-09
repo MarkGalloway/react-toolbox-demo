@@ -24,10 +24,13 @@
   "scripts": {
     "start": "react-scripts start",
     "start:public": "react-scripts start",
-    "build": "react-scripts build && cp build/index.html build/200.html",
+    "build": "react-scripts build",
+    "postbuild": "cp build/index.html build/200.html",
     "test": "react-scripts test --env=jsdom",
     "toolbox": "react-toolbox-themr",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "surge -p ./build -d appraisals-reacttoolbox-demo.surge.sh/"
   },
   "reactToolbox": {
     "output": "assets/react-toolbox"
