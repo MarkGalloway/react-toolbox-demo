@@ -50,11 +50,13 @@ class List extends Component {
           </Navigation>
         </AppBar>
         <Panel>
+          <div className="Appraisal-List">
           {
             appraisals.map(appraisal =>
               <ListItem key={appraisal.id} appraisal={appraisal}/>
             )
           }
+          </div>
           <Button
             className="Appraisal-fab"
             icon='add'

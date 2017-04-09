@@ -39,7 +39,7 @@ export class ListItem extends Component {
     } = this.props.appraisal;
 
     return (
-      <Card className="Appraisal-card">
+      <Card className="Appraisal-card Appraisal-card-flex">
         <div className="Appraisal-card-title">
           <CardTitle
             style={{flex: 1}}

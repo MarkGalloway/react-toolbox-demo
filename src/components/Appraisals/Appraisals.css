@@ -70,8 +70,38 @@
   padding: 0 1.0rem;
 }
 
+.Appraisal-List {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+/* Hack for preventing the last child from growing */
+.Appraisal-List::after {
+  content: '';
+  flex-grow: 1000000000;
+}
+
 .Appraisal-card {
-  margin: 5px 0;
+  margin: 2px 0;
+}
+
+.Appraisal-card-flex {
+  flex: 1 1 100%;
+}
+
+/* 2 per row  >= Tablet */
+@media only screen and (min-width: 768px) {
+  .Appraisal-card-flex {
+    flex: 1 1 50%;
+  }
+}
+
+/* 3 per row >= big screen*/
+@media only screen and (min-width: 1400px) {
+  .Appraisal-card-flex {
+    flex: 1 1 33.33%;
+    flex: 1 1 calc(100% / 3);
+  }
 }
 
 .Appraisal-card-title {
